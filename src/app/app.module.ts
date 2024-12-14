@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductItemDetailComponent,
     ProductListComponent,
     OrderDetailsComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

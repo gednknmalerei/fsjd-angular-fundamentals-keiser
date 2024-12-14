@@ -1,36 +1,11 @@
 <div *ngIf="cartItems.length > 0; else emptyTemplate" class="cart">
-  <div
+  <app-cart-item
     *ngFor="let cartProduct of cartProducts; let i = index"
     class="row align-items-center justify-content-between mb-4"
-  >
-    <div class="col">
-      <div class="row align-items-center">
-        <div
-          [ngStyle]="{ 'background-image': 'url(' + cartProduct.url + ')' }"
-          alt="Product image"
-          class="col-2 product-image"
-        ></div>
-        <div class="text col-auto ml-4">
-          <h2>{{ cartProduct.name }}</h2>
-          <div class="row align-items-center">
-            <p class="col-auto m-0">{{ cartProduct.price }} €</p>
-            <input
-              type="number"
-              [(ngModel)]="cartItems[i].count"
-              (ngModelChange)="updateCart(cartItems[i].id, cartItems[i].count)"
-              class="form-control mx-2 text-center col-auto"
-              style="width: 60px"
-              min="0"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-auto">
-      <p class="m-0">Total:</p>
-      <p>{{ getTotalPrice(cartProduct.price, cartItems[i].count) }} €</p>
-    </div>
-  </div>
+    [product]="cartProduct"
+    [cartItem]="cartItems[i]"
+    (cartUpdated)="updateCart($event)"
+  ></app-cart-item>
   <hr />
   <div class="totalPrice pb-4">
     <p class="m-0">Pay now:</p>

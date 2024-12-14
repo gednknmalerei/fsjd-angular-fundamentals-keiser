@@ -24,8 +24,12 @@ export class CartComponent implements OnInit {
     this.getCartProducts();
   }
 
-  public updateCart(id: number, quantity: number): void {
-    this.cartItems = this.cartService.updateCart(id, quantity);
+  public updateCart(event: CartItem): void {
+    const { id, count } = event;
+    if (count === 0) {
+      alert(`Product is removed from cart`);
+    }
+    this.cartItems = this.cartService.updateCart(id, count);
     this.getCartProducts();
   }
 
@@ -43,11 +47,6 @@ export class CartComponent implements OnInit {
         });
       }
     }
-  }
-
-  getTotalPrice(price: number, quantity: number): number {
-    const total = price * quantity;
-    return Math.round(total * 100) / 100;
   }
 
   sumTotal(): number {
