@@ -1,0 +1,20 @@
+.product-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  .product {
+    cursor: pointer;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  .product-image {
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+  }
+  .text {
+    background-color: #ececec;
+    color: #000;
+  }
+}

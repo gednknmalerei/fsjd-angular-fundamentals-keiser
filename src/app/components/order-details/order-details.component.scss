@@ -1,0 +1,25 @@
+.order-details {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  h2 {
+    font-size: 1.5rem;
+  }
+  label {
+    min-width: 150px;
+    padding-bottom: 0.25rem;
+  }
+  input {
+    width: 100%;
+    width: 100%;
+    background-color: #eeeeee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .text-danger {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+}

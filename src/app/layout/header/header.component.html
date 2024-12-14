@@ -1,0 +1,11 @@
+<div class="nav w-100 d-flex justify-content-center mb-4">
+  <div class="header row align-items-center justify-content-between w-100">
+    <a class="col-auto" routerLink="/"><h1>Super Shop</h1></a>
+    <a class="col-auto cart-icon" routerLink="/cart">
+      <fa-icon [icon]="faCartShopping" style="color: #ffffff"></fa-icon>
+      <p *ngIf="cartCount > 0" class="count">
+        {{ cartCount }}
+      </p>
+    </a>
+  </div>
+</div>
