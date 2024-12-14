@@ -1,6 +1,6 @@
-<div class="order-details">
-  <h2 class="mb-4">Order Details</h2>
+<div class="order-details row">
   <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <h2 class="mb-4">Shipping</h2>
     <div class="row pb-3">
       <div class="first-name col">
         <label>First Name</label>
@@ -41,11 +41,91 @@
       <div class="postcode col">
         <label>Postcode</label>
         <input type="text" formControlName="postcode" class="form-control" />
+        <div
+          *ngIf="
+            orderForm.get('postcode')?.invalid &&
+            (orderForm.get('postcode')?.dirty ||
+              orderForm.get('postcode')?.touched)
+          "
+          class="text-danger"
+        >
+          <div *ngIf="orderForm.get('postcode')?.errors?.['required']">
+            Postcode is required.
+          </div>
+          <div *ngIf="orderForm.get('postcode')?.errors?.['pattern']">
+            Please enter a valid postcode.
+          </div>
+        </div>
       </div>
 
       <div class="city col">
         <label>City</label>
         <input type="text" formControlName="city" class="form-control" />
+      </div>
+    </div>
+
+    <h2 class="my-4">Payment</h2>
+    <div class="row pb-3">
+      <div class="row pb-3">
+        <div class="creditcard col">
+          <label>Credit Card</label>
+          <input
+            type="text"
+            formControlName="creditcard"
+            class="form-control"
+            minlength="16"
+            maxlength="19"
+            placeholder="0000 0000 0000 0000"
+          />
+          <div
+            *ngIf="
+              orderForm.get('creditcard')?.invalid &&
+              (orderForm.get('creditcard')?.dirty ||
+                orderForm.get('creditcard')?.touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="orderForm.get('creditcard')?.errors?.['required']">
+              Credit card is required.
+            </div>
+            <div
+              *ngIf="orderForm.get('creditcard')?.errors?.['pattern'] || orderForm.get('creditcard')?.errors?.['minlength'] || orderForm.get('creditcard')?.errors?.['maxlength']"
+            >
+              Please enter a valid credit card number.
+            </div>
+          </div>
+        </div>
+
+        <div class="cvv col">
+          <label>CVV</label>
+          <input
+            type="text"
+            formControlName="cvv"
+            class="form-control"
+            minlength="3"
+            maxlength="3"
+            placeholder="000"
+          />
+          <div
+            *ngIf="
+              orderForm.get('cvv')?.invalid &&
+              (orderForm.get('cvv')?.dirty || orderForm.get('cvv')?.touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="orderForm.get('cvv')?.errors?.['required']">
+              CVV is required.
+            </div>
+            <div *ngIf="orderForm.get('cvv')?.errors?.['pattern']">
+              Please enter a valid CVV.
+            </div>
+            <div
+              *ngIf="orderForm.get('cvv')?.errors?.['minlength'] || orderForm.get('cvv')?.errors?.['maxlength']"
+            >
+              CVV must be exactly 3 digits long.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

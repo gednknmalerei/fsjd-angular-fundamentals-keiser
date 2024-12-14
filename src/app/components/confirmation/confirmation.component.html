@@ -1,1 +1,46 @@
-<p>confirmation works!</p>
+<div class="confirmation row">
+  <h1 class="mb-4">Thank you for your order! 🎉</h1>
+  <h2>Order Details:</h2>
+  <div class="row mb-4">
+    <div class="col-3">
+      <p>First Name:</p>
+      <p>Last Name:</p>
+      <p>E-Mail:</p>
+      <p>Address:</p>
+      <p>Postcode:</p>
+      <p>City:</p>
+    </div>
+    <div class="col">
+      <p>{{ orderForm.firstName }}</p>
+      <p>{{ orderForm.lastName }}</p>
+      <p>{{ orderForm.email }}</p>
+      <p>{{ orderForm.address }}</p>
+      <p>{{ orderForm.postcode }}</p>
+      <p>{{ orderForm.city }}</p>
+    </div>
+  </div>
+  <h2>Products:</h2>
+  <div class="products">
+    <div
+      *ngFor="let orderProduct of orderProducts; let i = index"
+      class="product row align-items-center pb-1"
+    >
+      <div class="left col">
+        <div class="row align-items-center">
+          <p class="col-auto">{{ order[i].count }} x</p>
+          <div class="col-auto image-wrapper">
+            <div
+              [ngStyle]="{
+                'background-image': 'url(' + orderProduct.url + ')'
+              }"
+              alt="Product image"
+              class="product-image"
+            ></div>
+          </div>
+          <p class="col-auto">{{ orderProduct.name }}</p>
+        </div>
+      </div>
+      <p class="right col-auto">{{ orderProduct.price }} €</p>
+    </div>
+  </div>
+</div>

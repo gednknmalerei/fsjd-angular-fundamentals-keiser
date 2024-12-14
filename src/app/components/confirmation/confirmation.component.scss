@@ -1,20 +1,21 @@
-.confirmation-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 8%;
-}
-
-.confirmation-items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.confirmation-header {
-  color: #33e5bc;
-}
-
-.confirmation-item {
-  margin-bottom: 30px;
+.confirmation {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .image-wrapper {
+    width: 10%;
+    .product-image {
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      background-position: center;
+      margin-right: 1rem;
+      width: 100%;
+    }
+  }
 }

@@ -6,14 +6,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private readonly STORAGE_KEY = 'cart';
+  private readonly STORAGE_KEY_CART = 'cart';
+  private readonly STORAGE_KEY_ORDER = 'order';
   private cartCountSubject: BehaviorSubject<number> =
     new BehaviorSubject<number>(0);
   cart: CartItem[] = [];
+  order: CartItem[] = [];
 
   constructor() {
-    const savedCart = localStorage.getItem(this.STORAGE_KEY);
+    const savedCart = localStorage.getItem(this.STORAGE_KEY_CART);
     this.cart = savedCart ? JSON.parse(savedCart) : [];
+    const savedOrder = localStorage.getItem(this.STORAGE_KEY_ORDER);
+    this.order = savedOrder ? JSON.parse(savedOrder) : [];
     this.updateCartCount();
   }
 
@@ -67,7 +71,23 @@ export class CartService {
     return this.cartCountSubject.asObservable();
   }
 
+  getOrder(): CartItem[] {
+    return this.order;
+  }
+
   private saveCartToLocalStorage(): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.cart));
+    localStorage.setItem(this.STORAGE_KEY_CART, JSON.stringify(this.cart));
+  }
+
+  private saveOrderToLocalStorage(): void {
+    localStorage.setItem(this.STORAGE_KEY_ORDER, JSON.stringify(this.cart));
+  }
+
+  clearCartToOrder(): void {
+    this.order = this.cart;
+    this.saveOrderToLocalStorage();
+    this.cart = [];
+    this.saveCartToLocalStorage();
+    this.updateCartCount();
   }
 }

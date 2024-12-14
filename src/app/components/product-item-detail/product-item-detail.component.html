@@ -1,23 +1,21 @@
-<div *ngIf="product" class="product">
-  <div class="row">
-    <img class="col-4" [src]="product.url" alt="" />
-    <div class="text col-8">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <p>{{ product.price }} €</p>
-      <div class="row">
-        <input
-          type="number"
-          [(ngModel)]="quantity"
-          class="form-control mx-2 text-center col-auto"
-          style="width: 60px"
-          min="1"
-        />
-        <button class="btn btn-dark col-auto" (click)="addToCart()">
-          <fa-icon [icon]="faCartShopping" style="color: #ffffff"></fa-icon>Add
-          to cart
-        </button>
-      </div>
+<div *ngIf="product" class="product row">
+  <img class="col-4" [src]="product.url" alt="" />
+  <div class="text col-8">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }} €</p>
+    <div class="row">
+      <input
+        type="number"
+        [(ngModel)]="quantity"
+        class="form-control mx-2 text-center col-auto"
+        style="width: 60px"
+        min="1"
+      />
+      <button class="btn btn-dark col-auto" (click)="addToCart()">
+        <fa-icon [icon]="faCartShopping" style="color: #ffffff"></fa-icon>Add to
+        cart
+      </button>
     </div>
   </div>
 </div>
